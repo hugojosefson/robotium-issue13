@@ -15,8 +15,24 @@ import com.jayway.android.robotium.solo.Solo;
  */
 public class OverlordActivityTest extends ActivityInstrumentationTestCase2<OverlordActivity> {
 
+
+  private Solo solo;
+
   public OverlordActivityTest() {
     super("com.overlord", OverlordActivity.class);
+  }
+
+
+  public void setUp() throws Exception {
+    solo = new Solo(getInstrumentation(), getActivity());
+  }
+
+  public void testSoloIsNotNull() {
+    assertTrue(solo != null);
+  }
+
+  public void testHelloWorldTextIsFound() {
+    assertTrue(solo.searchText("Hello World"));
   }
 
 
